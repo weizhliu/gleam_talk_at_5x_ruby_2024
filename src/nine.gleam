@@ -1,6 +1,4 @@
-import gleam/dynamic
 import gleam/int
-import gleam/io
 import gleam/list
 import lustre
 import lustre/attribute
@@ -29,9 +27,6 @@ pub type Msg {
 }
 
 pub fn update(model: Model, msg: Msg) -> #(Model, effect.Effect(Msg)) {
-  io.debug(msg.like)
-  io.debug(model.liked)
-
   let liked = case list.contains(model.liked, msg.like) {
     True -> list.filter(model.liked, fn(x) { x != msg.like })
     False -> [msg.like, ..model.liked]
@@ -42,30 +37,41 @@ pub fn update(model: Model, msg: Msg) -> #(Model, effect.Effect(Msg)) {
 
 pub fn view(model: Model) -> element.Element(Msg) {
   let liked = model.liked
-
-  html.div([], [
-    like_button(1, liked),
-    like_button(2, liked),
-    like_button(3, liked),
-    like_button(4, liked),
-    like_button(5, liked),
-    like_button(6, liked),
-    like_button(7, liked),
-    like_button(8, liked),
-    like_button(9, liked),
+  html.div([attribute.class("flex content-center justify-center h-dvh")], [
+    html.div([attribute.class("grid grid-cols-3 m-auto gap-1")], [
+      block(4, "靜態性別", liked),
+      block(9, "遞迴", liked),
+      block(6, "模式匹配", liked),
+      block(7, "標籤參數", liked),
+      block(1, "開發體驗", liked),
+      block(3, "極簡語法", liked),
+      block(2, "函數式", liked),
+      block(5, "Result", liked),
+      block(8, "編譯成 JavaScript 或 Erlang", liked),
+    ]),
   ])
 }
 
-fn like_button(number: Int, liked: List(Int)) -> element.Element(Msg) {
-  html.button([event.on_click(Msg(number))], [
-    element.text(int.to_string(number)),
-    is_liked(number, liked),
-  ])
+fn block(number: Int, title: String, liked: List(Int)) -> element.Element(Msg) {
+  html.div(
+    [
+      event.on_click(Msg(number)),
+      attribute.class(
+        "bg-gray-50 border size-40 font-bold text-2xl
+        flex flex-col items-center justify-center cursor-pointer",
+      ),
+      is_liked(number, liked),
+    ],
+    [
+      html.h3([], [element.text(int.to_string(number))]),
+      html.span([attribute.class("text-center")], [element.text(title)]),
+    ],
+  )
 }
 
-fn is_liked(number: Int, liked: List(Int)) -> element.Element(Msg) {
+fn is_liked(number: Int, liked: List(Int)) -> attribute.Attribute(Msg) {
   case list.contains(liked, number) {
-    True -> element.text("❤️")
-    False -> element.text("")
+    True -> attribute.class("!bg-amber-200")
+    False -> attribute.class("")
   }
 }
