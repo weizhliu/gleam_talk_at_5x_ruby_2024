@@ -9,5 +9,8 @@ pub fn sample() {
   //
   //
 
+  // [gleam_erlang](https://hexdocs.pm/gleam_erlang/)
+  // [gleam_otp](https://hexdocs.pm/gleam_otp/)
+
   Nil
 }
