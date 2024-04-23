@@ -1,6 +1,9 @@
 # Lets Gleam
 介紹 Gleam ，2024/4/23 默默會分享用專案
 
+# 九宮格連結
+[https://weizhliu.github.io/gleam_talk_at_5x_ruby_2024/](https://weizhliu.github.io/gleam_talk_at_5x_ruby_2024/)
+
 
 ## 9大特點
 1. develop ux
