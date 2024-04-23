@@ -39,7 +39,7 @@ pub fn view(model: Model) -> element.Element(Msg) {
   let liked = model.liked
   html.div([attribute.class("flex content-center justify-center h-dvh")], [
     html.div([attribute.class("grid grid-cols-3 m-auto gap-1")], [
-      block(4, "靜態性別", liked),
+      block(4, "靜態型別", liked),
       block(9, "遞迴", liked),
       block(6, "模式匹配", liked),
       block(7, "標籤參數", liked),
