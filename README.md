@@ -15,14 +15,27 @@
 
 
 ## 執行特點範例
-
 ```sh
 gleam run -m lets_gleam 2
+```
+
+## lustre: start a development server
+```sh
+gleam run -m lustre/dev start
 ```
 
 ## 其他連結
 - [Gleam 官網](https://gleam.run/)
 - [Gleam GitHub](https://github.com/gleam-lang/gleam)
+- [Gleam Tour](https://tour.gleam.run/)
+- [Lustre](https://hexdocs.pm/lustre/index.html)
 - [Awesome-gleam](https://github.com/gleam-lang/awesome-gleam)
 - [Louis Pilfold](https://github.com/lpil)
 - [Exercism - Gleam](https://exercism.org/tracks/gleam)
+
+
+## Marp keynote
+```
+npx @marp-team/marp-cli@latest -s ./
+open http://localhost:8080/keynote.md#1
+```
